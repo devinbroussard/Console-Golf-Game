@@ -34,21 +34,56 @@ namespace Math_For_Games
             Vector2 moveDirection = new Vector2();
 
             ConsoleKey keyPressed = Engine.GetNextKey();
-            asdf
-            if (keyPressed == ConsoleKey.1)
+
+            if (keyPressed == ConsoleKey.D1) 
+            {
+                _clubIcon.Color = ConsoleColor.Blue;
+                Speed = 10;
+            }
+            if (keyPressed == ConsoleKey.D2)
+            {
+                _clubIcon.Color = ConsoleColor.DarkGreen;
+                Speed = 5;
+            }
+            if (keyPressed == ConsoleKey.D3)
+            {
+                _clubIcon.Color = ConsoleColor.Magenta;
+                Speed = 1;
+
+            }
 
             if (keyPressed == ConsoleKey.A)
+            {
                 moveDirection = new Vector2 { X = -1 };
+                UIText.StrokeCounter();
+            }
             if (keyPressed == ConsoleKey.D)
+            {
                 moveDirection = new Vector2 { X = 1 };
+                UIText.StrokeCounter();
+            }
             if (keyPressed == ConsoleKey.W)
+            {
                 moveDirection = new Vector2 { Y = -1 };
+                UIText.StrokeCounter();
+            }
             if (keyPressed == ConsoleKey.S)
+            {
                 moveDirection = new Vector2 { Y = 1 };
-
+                UIText.StrokeCounter();
+            }
 
             Velocity = moveDirection * Speed;
             Position += Velocity;
+
+            if (Position.Y < 2)
+                Position = new Vector2 { X = Position.X, Y = 2 };
+            if (Position.Y > 7)
+                Position = new Vector2 { X = Position.X, Y = 7 };
+            if (Position.X > 39)
+                Position = new Vector2 { X = 39, Y = Position.Y };
+
+
         }
 
         public override void Draw()
@@ -59,7 +94,10 @@ namespace Math_For_Games
 
         public override void OnCollision(Actor actor)
         {
-            Engine.CloseApplication();
+            if (actor is GolfCup)
+            {
+                Engine.CloseApplication();
+            }
         }
     }
 }

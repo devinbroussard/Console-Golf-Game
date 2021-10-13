@@ -40,9 +40,23 @@ namespace Math_For_Games
         /// </summary>
         private void Start()
         {
-            Scene scene = new Scene();
+            Scene gameScene = new Scene();
+            GolfBall golfBall = new GolfBall('.', 1, 2, 10, "Golf Ball", ConsoleColor.White);
+            GolfCup golfCup = new GolfCup('P', 30, 4, "Golf Cup", ConsoleColor.Cyan);
+            UIText ui = new UIText();
+            Wall wallOne = new Wall('#', 0, 1, "Wall", ConsoleColor.DarkGreen, 1);
+            Wall wallTwo = new Wall('#', 0, 8, "Wall", ConsoleColor.DarkGreen, 1);
+            Wall wallThree = new Wall('#', 40, 2, "Wall", ConsoleColor.DarkGreen, 2);
 
-            _currentSceneIndex = AddScene(scene);
+
+            gameScene.AddActor(ui);
+            gameScene.AddActor(golfBall);
+            gameScene.AddActor(golfCup);
+            gameScene.AddActor(wallOne);
+            gameScene.AddActor(wallTwo);
+            gameScene.AddActor(wallThree);
+
+            _currentSceneIndex = AddScene(gameScene);
 
             _scenes[_currentSceneIndex].Start();
         }
@@ -64,10 +78,10 @@ namespace Math_For_Games
         private void Draw() 
         {
             //Clear the stuff that was on the screen in the last frame
-            _buffer = new Icon[Console.WindowWidth, Console.WindowHeight -1];
+            _buffer = new Icon[Console.WindowWidth, Console.WindowHeight - 2];
 
             //Resets the cursor position so the previous screen is drawn over
-            Console.SetCursorPosition(0, 0);
+            Console.SetCursorPosition(0, 2);
 
             //Adds all actor icons to buffer
             _scenes[_currentSceneIndex].Draw();
@@ -80,7 +94,7 @@ namespace Math_For_Games
                     if (_buffer[x, y].Symbol == '\0')
                     {
                         _buffer[x, y].Symbol = ' ';
-                    }
+                     }
 
                     //Set console text color to be the color of item at buffer
                     Console.ForegroundColor = _buffer[x, y].Color;

@@ -49,6 +49,10 @@ namespace Math_For_Games
             _name = name;
         }
 
+        public Actor()
+        {
+
+        }
 
         public virtual void Start() 
         {
@@ -64,7 +68,7 @@ namespace Math_For_Games
             Engine.Render(_icon, Position);
         }
 
-        public void End() { }
+        public virtual void End() { }
 
         public virtual void OnCollision(Actor actor)
         {
