@@ -41,16 +41,16 @@ namespace Math_For_Games
         private void Start()
         {
             Scene gameScene = new Scene();
-            GolfBall golfBall = new GolfBall('.', 1, 2, 10, "Golf Ball", ConsoleColor.White);
+            Player player = new Player('.', 1, 2, 10, "Golf Ball", ConsoleColor.White);
             GolfCup golfCup = new GolfCup('P', 30, 4, "Golf Cup", ConsoleColor.Cyan);
-            UIText ui = new UIText();
+            UIText ui = new UIText(player);
             Wall wallOne = new Wall('#', 0, 1, "Wall", ConsoleColor.DarkGreen, 1);
             Wall wallTwo = new Wall('#', 0, 8, "Wall", ConsoleColor.DarkGreen, 1);
             Wall wallThree = new Wall('#', 40, 2, "Wall", ConsoleColor.DarkGreen, 2);
 
 
             gameScene.AddActor(ui);
-            gameScene.AddActor(golfBall);
+            gameScene.AddActor(player);
             gameScene.AddActor(golfCup);
             gameScene.AddActor(wallOne);
             gameScene.AddActor(wallTwo);

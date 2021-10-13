@@ -5,11 +5,22 @@ using Math_Library;
 
 namespace Math_For_Games
 {
-    class GolfBall : Actor
+    class Player : Actor
     {
         private float _speed;
         private Vector2 _velocity;
         private Icon _clubIcon;
+        private int _strokeCounter;
+        private bool _isGameOver;
+
+        public bool IsGameOver
+        {
+            get { return _isGameOver; }
+        }
+        public int StrokeCounter
+        {
+            get { return _strokeCounter; }
+        }
 
         public float Speed
         {
@@ -22,7 +33,7 @@ namespace Math_For_Games
             set { _velocity = value; }
         }
 
-        public GolfBall(char icon, float x, float y, float speed, string name = "actor", ConsoleColor color = ConsoleColor.White)
+        public Player(char icon, float x, float y, float speed, string name = "actor", ConsoleColor color = ConsoleColor.White)
             : base(icon, x, y, name, color)
         {
             _speed = speed;
@@ -31,6 +42,12 @@ namespace Math_For_Games
 
         public override void Update()
         {
+            if (_isGameOver)
+            {
+                Console.ReadKey(true);
+                Engine.CloseApplication();
+            }
+
             Vector2 moveDirection = new Vector2();
 
             ConsoleKey keyPressed = Engine.GetNextKey();
@@ -55,22 +72,22 @@ namespace Math_For_Games
             if (keyPressed == ConsoleKey.A)
             {
                 moveDirection = new Vector2 { X = -1 };
-                UIText.StrokeCounter();
+                _strokeCounter++;
             }
             if (keyPressed == ConsoleKey.D)
             {
                 moveDirection = new Vector2 { X = 1 };
-                UIText.StrokeCounter();
+                _strokeCounter++;
             }
             if (keyPressed == ConsoleKey.W)
             {
                 moveDirection = new Vector2 { Y = -1 };
-                UIText.StrokeCounter();
+                _strokeCounter++;
             }
             if (keyPressed == ConsoleKey.S)
             {
                 moveDirection = new Vector2 { Y = 1 };
-                UIText.StrokeCounter();
+                _strokeCounter++;
             }
 
             Velocity = moveDirection * Speed;
@@ -96,7 +113,7 @@ namespace Math_For_Games
         {
             if (actor is GolfCup)
             {
-                Engine.CloseApplication();
+                _isGameOver = true;
             }
         }
     }

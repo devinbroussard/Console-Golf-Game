@@ -6,12 +6,17 @@ namespace Math_For_Games
 {
     class UIText : Actor
     {
-        private static int _strokeCounter;
+        Player _player;
+
+        public UIText(Player player)
+        {
+            _player = player;
+        }
 
         public override void Start()
         {
             base.Start();
-            _strokeCounter = 0;
+            
         }
 
         public override void Update()
@@ -21,19 +26,17 @@ namespace Math_For_Games
 
         public override void Draw()
         {
-            
             Console.SetCursorPosition(0, 0);
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine($"Current Stroke: {_strokeCounter}");
-            
+            if (!_player.IsGameOver)
+            {
+                Console.WriteLine($"Current Stroke: {_player.StrokeCounter}");
+                return;
+            }
+            Console.WriteLine($"You won in {_player.StrokeCounter} strokes!");
+
         }
 
         public override void End() { }
-
-        public static void StrokeCounter() 
-        {
-            _strokeCounter++;
-        }
-
     }
 }
