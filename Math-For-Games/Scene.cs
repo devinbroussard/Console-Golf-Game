@@ -10,10 +10,15 @@ namespace Math_For_Games
         /// Array that stores all actors in the scene
         /// </summary>
         private Actor[] _actors;
+        /// <summary>
+        /// Array that stores UI stuff only
+        /// </summary>
+        private Actor[] _UIElements;
 
         public Scene()
         {
             _actors = new Actor[0];
+            _UIElements = new Actor[0];
         }
 
         /// <summary>
@@ -45,10 +50,26 @@ namespace Math_For_Games
             }
         }
 
+        public virtual void UpdateUI()
+        {
+            for (int i = 0; i < _UIElements.Length; i++)
+            {
+                if (!_UIElements[i].Started)
+                    _UIElements[i].Start();
+                _UIElements[i].Update();
+            }
+        }
+
         public virtual void Draw()
         {
             for (int i = 0; i < _actors.Length; i++)
                 _actors[i].Draw();
+        }
+
+        public virtual void DrawUI()
+        {
+            for (int i = 0; i < _UIElements.Length; i++)
+                _UIElements[i].Draw();
         }
 
         public virtual void End() 
@@ -77,6 +98,28 @@ namespace Math_For_Games
             //Set the old array to be the new array;
             _actors = tempArray;
         }
+
+        /// <summary>
+        /// Adds an actor to the scenes list of UI elements.
+        /// </summary>
+        /// <param name="actor"></param>
+        public void AddUIElement(Actor UI)
+        {
+            //Create a temp array larger than the original
+            Actor[] tempArray = new Actor[_UIElements.Length + 1];
+
+            //Copy all values from the original array into the temp array
+            for (int i = 0; i < _UIElements.Length; i++)
+            {
+                tempArray[i] = _UIElements[i];
+            }
+            //Adds the new actor to the end of the new array
+            tempArray[_UIElements.Length] = UI;
+
+            //Set the old array to be the new array;
+            _UIElements = tempArray;
+        }
+
 
         /// <summary>
         /// Removes an actor from the scene list of actors

@@ -21,7 +21,7 @@ namespace Math_For_Games
         public override void Draw()
         {
             if (_type == 1)
-                for (int i = 0; i < 40; i++)
+                for (int i = 0; i < 41; i++)
                 {
                     Engine.Render(Icon, Position + new Vector2 { X = i });
                 }

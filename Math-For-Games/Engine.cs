@@ -40,16 +40,19 @@ namespace Math_For_Games
         /// </summary>
         private void Start()
         {
+            //Create new scene
             Scene gameScene = new Scene();
+            //Create an add new actors to the scene
             Player player = new Player('.', 1, 2, 10, "Golf Ball", ConsoleColor.White);
             GolfCup golfCup = new GolfCup('P', 30, 4, "Golf Cup", ConsoleColor.Cyan);
-            UIText ui = new UIText(player);
-            Wall wallOne = new Wall('#', 0, 1, "Wall", ConsoleColor.DarkGreen, 1);
-            Wall wallTwo = new Wall('#', 0, 8, "Wall", ConsoleColor.DarkGreen, 1);
-            Wall wallThree = new Wall('#', 40, 2, "Wall", ConsoleColor.DarkGreen, 2);
+            Wall wallOne = new Wall('-', 0, 1, "Wall", ConsoleColor.DarkGreen, 1);
+            Wall wallTwo = new Wall('-', 0, 8, "Wall", ConsoleColor.DarkGreen, 1);
+            Wall wallThree = new Wall('|', 41, 2, "Wall", ConsoleColor.DarkGreen, 2);
+            //Create an add UI Elements to the scene
+            UIText strokeText = new UIText(0, 0, "Health", ConsoleColor.Blue, 30, 10, $"Stroke Count: {player.StrokeCounter}");
+            PlayerHud playerHud = new PlayerHud(player, strokeText);
 
-
-            gameScene.AddActor(ui);
+            gameScene.AddUIElement(playerHud);
             gameScene.AddActor(player);
             gameScene.AddActor(golfCup);
             gameScene.AddActor(wallOne);
@@ -67,6 +70,7 @@ namespace Math_For_Games
         private void Update()
         {
             _scenes[_currentSceneIndex].Update();
+            _scenes[_currentSceneIndex].UpdateUI();
 
             while (Console.KeyAvailable)
                 Console.ReadKey(true);
@@ -78,10 +82,14 @@ namespace Math_For_Games
         private void Draw() 
         {
             //Clear the stuff that was on the screen in the last frame
-            _buffer = new Icon[Console.WindowWidth, Console.WindowHeight - 2];
+            _buffer = new Icon[Console.WindowWidth, Console.WindowHeight -1];
+
+            //Reset the cursor position to the top so the previous screen is drawn over
+            Console.SetCursorPosition(0, 0);
 
             //Adds all actor icons to buffer
             _scenes[_currentSceneIndex].Draw();
+            _scenes[_currentSceneIndex].DrawUI();
 
             //Iterate through buffer
             for (int y = 0; y < _buffer.GetLength(1); y++)
