@@ -37,7 +37,7 @@ namespace Math_For_Games
             : base(icon, x, y, name, color)
         {
             _speed = speed;
-            _clubIcon = new Icon { Color = ConsoleColor.Blue, Symbol = 'L' };
+            _clubIcon = new Icon { ForegroundColor = ConsoleColor.Blue, Symbol = 'L' };
         }
 
         public override void Update()
@@ -54,17 +54,17 @@ namespace Math_For_Games
 
             if (keyPressed == ConsoleKey.D1) 
             {
-                _clubIcon.Color = ConsoleColor.Blue;
+                _clubIcon.ForegroundColor = ConsoleColor.Blue;
                 Speed = 10;
             }
             if (keyPressed == ConsoleKey.D2)
             {
-                _clubIcon.Color = ConsoleColor.DarkGreen;
+                _clubIcon.ForegroundColor = ConsoleColor.DarkGreen;
                 Speed = 5;
             }
             if (keyPressed == ConsoleKey.D3)
             {
-                _clubIcon.Color = ConsoleColor.Magenta;
+                _clubIcon.ForegroundColor = ConsoleColor.Magenta;
                 Speed = 1;
 
             }

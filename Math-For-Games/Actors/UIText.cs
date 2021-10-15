@@ -84,7 +84,7 @@ namespace Math_For_Games
             int cursorPosY = (int)Position.Y;
 
             //Create a new icon to store the current character and color
-            Icon currentLetter = new Icon { Color = Icon.Color };
+            Icon currentLetter = new Icon { ForegroundColor = Icon.ForegroundColor };
 
             //Convert the string for text into a character array
             char[] textChars = Text.ToCharArray();

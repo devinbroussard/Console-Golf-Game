@@ -12,8 +12,8 @@ namespace Math_For_Games
         /// </summary>
         private int _type;
 
-        public Wall(char icon, float x, float y, string name, ConsoleColor color, int type)
-          : base(icon, x, y, name, color)
+        public Wall(char icon, float x, float y, string name, ConsoleColor foregroundColor, ConsoleColor backgroundColor, int type)
+          : base(icon, x, y, name, foregroundColor, backgroundColor)
         {
             _type = type;
         }

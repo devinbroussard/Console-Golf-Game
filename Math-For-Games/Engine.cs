@@ -43,13 +43,13 @@ namespace Math_For_Games
             //Create new scene
             Scene gameScene = new Scene();
             //Create an add new actors to the scene
-            Player player = new Player('.', 1, 2, 10, "Golf Ball", ConsoleColor.White);
-            GolfCup golfCup = new GolfCup('P', 30, 4, "Golf Cup", ConsoleColor.Cyan);
-            Wall wallOne = new Wall('-', 0, 1, "Wall", ConsoleColor.DarkGreen, 1);
-            Wall wallTwo = new Wall('-', 0, 8, "Wall", ConsoleColor.DarkGreen, 1);
-            Wall wallThree = new Wall('|', 41, 2, "Wall", ConsoleColor.DarkGreen, 2);
+            Player player = new Player('.', 1, 3, 10, "Golf Ball", ConsoleColor.White);
+            GolfCup golfCup = new GolfCup('P', 30, 4, "Golf Cup", ConsoleColor.Yellow);
+            Wall wallOne = new Wall('-', 0, 1, "Wall", ConsoleColor.DarkGray, ConsoleColor.DarkGray, 1);
+            Wall wallTwo = new Wall('-', 0, 8, "Wall", ConsoleColor.DarkGray, ConsoleColor.DarkGray, 1);
+            Wall wallThree = new Wall('|', 40, 2, "Wall", ConsoleColor.DarkGray, ConsoleColor.DarkGray, 2);
             //Create an add UI Elements to the scene
-            UIText strokeText = new UIText(0, 0, "Health", ConsoleColor.Blue, 30, 10, $"Stroke Count: {player.StrokeCounter}");
+            UIText strokeText = new UIText(0, 0, "Health", ConsoleColor.Cyan, 30, 10, $"Stroke Count: {player.StrokeCounter}");
             PlayerHud playerHud = new PlayerHud(player, strokeText);
 
             gameScene.AddUIElement(playerHud);
@@ -102,7 +102,8 @@ namespace Math_For_Games
                      }
 
                     //Set console text color to be the color of item at buffer
-                    Console.ForegroundColor = _buffer[x, y].Color;
+                    Console.ForegroundColor = _buffer[x, y].ForegroundColor;
+                    Console.BackgroundColor = _buffer[x, y].BackGroundColor;
                     //Print the symbol of the item in the buffer
                     Console.Write(_buffer[x, y].Symbol);
                 }
