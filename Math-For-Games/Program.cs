@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Math_For_Games
+namespace Golf_Game
 {
     class Program
     {

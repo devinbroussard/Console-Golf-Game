@@ -4,7 +4,7 @@ using System.Text;
 using System.Threading;
 using Math_Library;
 
-namespace Math_For_Games
+namespace Golf_Game
 {
     class Engine
     {

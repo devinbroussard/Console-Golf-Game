@@ -32,9 +32,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\s218014\\source\\repos\\Console-Golf-Game\\Math-For-Games\\Math-For-Games.csproj",
-      "projectName": "Math-For-Games",
-      "projectPath": "C:\\Users\\s218014\\source\\repos\\Console-Golf-Game\\Math-For-Games\\Math-For-Games.csproj",
+      "projectUniqueName": "C:\\Users\\s218014\\source\\repos\\Console-Golf-Game\\Math-For-Games\\Golf-Game.csproj",
+      "projectName": "Golf-Game",
+      "projectPath": "C:\\Users\\s218014\\source\\repos\\Console-Golf-Game\\Math-For-Games\\Golf-Game.csproj",
       "packagesPath": "C:\\Users\\s218014\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\s218014\\source\\repos\\Console-Golf-Game\\Math-For-Games\\obj\\",
       "projectStyle": "PackageReference",

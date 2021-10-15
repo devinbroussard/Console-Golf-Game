@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Math_For_Games
+namespace Golf_Game
 {
     class PlayerHud : Actor
     {

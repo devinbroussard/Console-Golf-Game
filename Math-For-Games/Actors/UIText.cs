@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Math_Library;
 
-namespace Math_For_Games
+namespace Golf_Game
 {
     class UIText : Actor
     {
