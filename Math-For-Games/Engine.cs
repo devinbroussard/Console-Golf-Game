@@ -80,9 +80,6 @@ namespace Math_For_Games
             //Clear the stuff that was on the screen in the last frame
             _buffer = new Icon[Console.WindowWidth, Console.WindowHeight - 2];
 
-            //Resets the cursor position so the previous screen is drawn over
-            Console.SetCursorPosition(0, 2);
-
             //Adds all actor icons to buffer
             _scenes[_currentSceneIndex].Draw();
 
