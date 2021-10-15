@@ -52,9 +52,7 @@ namespace Golf_Game
         }
 
         public Actor()
-        {
-
-        }
+        { }
 
         public virtual void Start() 
         {
