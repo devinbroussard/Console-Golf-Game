@@ -107,9 +107,6 @@ namespace Golf_Game
                     //Print the symbol of the item in the buffer
                     Console.Write(_buffer[x, y].Symbol);
                 }
-
-                //Skip a line once the end of a row has been reached
-                Console.WriteLine();
             }
 
             //Sets the cursor visibility to be false
