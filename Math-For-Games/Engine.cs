@@ -28,7 +28,7 @@ namespace Golf_Game
                 Update();
                 Draw();
 
-                Thread.Sleep(50);
+                Thread.Sleep(15);
             }
 
             //Called when the application closes
@@ -82,7 +82,7 @@ namespace Golf_Game
         private void Draw() 
         {
             //Clear the stuff that was on the screen in the last frame
-            _buffer = new Icon[Console.WindowWidth, Console.WindowHeight -1];
+            _buffer = new Icon[Console.WindowWidth - 1, Console.WindowHeight - 1];
 
             //Reset the cursor position to the top so the previous screen is drawn over
             Console.SetCursorPosition(0, 0);
@@ -106,7 +106,11 @@ namespace Golf_Game
                     Console.BackgroundColor = _buffer[x, y].BackGroundColor;
                     //Print the symbol of the item in the buffer
                     Console.Write(_buffer[x, y].Symbol);
+
                 }
+
+                //Skips a line once it reaches the page 
+                Console.Write('\n');
             }
 
             //Sets the cursor visibility to be false
